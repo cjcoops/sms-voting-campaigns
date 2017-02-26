@@ -6,7 +6,7 @@ feature 'campaigns' do
   end
 
   scenario 'show all campaigns' do
-    visit('/index')
+    visit('/campaigns')
     expect(page).to have_css('h1', text: "Campaigns")
     expect(page).to have_content("ssss_uk_02A")
   end

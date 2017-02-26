@@ -1,0 +1,8 @@
+<h1>Campaigns</h1>
+<% if @campaigns.any? %>
+  <% @campaigns.each do |campaign| %>
+    <h3> <%= campaign.name %> </h3>
+  <% end %>
+<% else %>
+  No campaigns to see
+<% end %>

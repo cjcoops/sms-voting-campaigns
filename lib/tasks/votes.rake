@@ -5,15 +5,14 @@ namespace :votes do
 
     lines =  File.readlines(file)
 
-    line = lines[0]
+    lines.each do |line|
+      epoch_time = line.split(' ')[1]
+      campaign_name = line.split(' ')[2].split(':')[1]
+      validity = line.split(' ')[3].split(':')[1]
+      choice = line.split(' ')[4].split(':')[1]
 
-    epoch_time = line.split(' ')[1]
-    campaign_name = line.split(' ')[2].split(':')[1]
-    validity = line.split(' ')[3].split(':')[1]
-    choice = line.split(' ')[4].split(':')[1]
-
-    campaign = Campaign.create(name: campaign_name)
-    campaign.votes.create(epoch_time: epoch_time, validity: validity, choice: choice)
-
+      campaign = Campaign.first_or_create(name: campaign_name)
+      campaign.votes.create(epoch_time: epoch_time, validity: validity, choice: choice)
+    end
   end
 end

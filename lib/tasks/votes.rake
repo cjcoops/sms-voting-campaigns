@@ -7,9 +7,13 @@ namespace :votes do
 
     line = lines[0]
 
-    p epoch_time = line.split(' ')[1]
-    p campaign = line.split(' ')[2].split(':')[1]
-    p validity = line.split(' ')[3].split(':')[1]
-    p choice = line.split(' ')[4].split(':')[1]
+    epoch_time = line.split(' ')[1]
+    campaign_name = line.split(' ')[2].split(':')[1]
+    validity = line.split(' ')[3].split(':')[1]
+    choice = line.split(' ')[4].split(':')[1]
+
+    campaign = Campaign.create(name: campaign_name)
+    campaign.votes.create(epoch_time: epoch_time, validity: validity, choice: choice)
+
   end
 end

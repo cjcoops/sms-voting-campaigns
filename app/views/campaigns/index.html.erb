@@ -1,7 +1,7 @@
 <h1>Campaigns</h1>
 <% if @campaigns.any? %>
   <% @campaigns.each do |campaign| %>
-    <h3> <%= campaign.name %> </h3>
+    <h3> <%= link_to campaign.name, campaign_path(campaign) %>
   <% end %>
 <% else %>
   No campaigns to see

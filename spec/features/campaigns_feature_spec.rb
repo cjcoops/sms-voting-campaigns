@@ -7,10 +7,14 @@ feature 'campaigns' do
   end
 
   scenario 'show all campaigns' do
-    visit('/campaigns')
+    visit('/')
     expect(page).to have_css('h1', text: "Campaigns")
     expect(page).to have_css('h3', text: "ssss_uk_02A")
     expect(page).to have_css('h3', text: "ssss_uk_01B")
   end
+
+  # scenario 'viewing a campaign page' do
+  #   visit
+  # end
 
 end

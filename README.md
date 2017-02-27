@@ -15,10 +15,27 @@ derived from log data held in a text file. Deliverables:
 Usage
 ---------
 To use make sure that you first have Rails and Postgres installed.
-```
-$
-```
 
+Clone the repo and install dependencies:
 ```
-$ bin/rake votes:import\["/Users/chriscooper/Desktop/votes_short.txt"\]
+$ git clone https://github.com/cjcoops/sms-voting-campaigns.git
+$ cd sms-voting-campaigns
+$ bundle install
 ```
+Create and migrate development and test databases:
+```
+$ bin/rake db:create
+$ bin/rake db:create RAILS_ENV=test
+$ bin/rake db:migrate
+$ bin/rake db:migrate RAILS_ENV=test
+```
+To import SMS data into the database. This assumes you are using zsh. If using bash you may not need `\` before the square brackets.
+```
+$ bin/rake votes:import\["/path/to/votes.txt"\]
+```
+To run the tests:
+```
+$ rspec
+```
+Approach
+----------
